@@ -1,14 +1,14 @@
 <?php
 	$profiles = $debugWidget->getProfiler()->getProfiles();
-	$profiles = !$profiles? array() : $profiles;
+	$profiles = !$profiles ? array() : $profiles;
 ?>
-<div id='pdw-panel-db' class='pdw-panel db'>
-	<div class='title'>
-		<h2>Database Info</h2>
+<div id="pdw-panel-db" class="pdw-panel db">
+	<div class="title">
+		<h2>Database Info <a class="pdw-panel-close">&times;</a></h2>
 	</div>
-	<div class='panel-content'>
-		<h3 class='collapser'>SQL Queries</h3>
-		<table class='pdw-sql-data-table'>
+	<div class="panel-content">
+		<h3 class="collapser">SQL Queries</h3>
+		<table class='pdw-data-table'>
 			<thead>
 				<tr>
 					<th>Query</th>
@@ -22,15 +22,14 @@
 					$time = $profile->getTotalElapsedSeconds();
 					$total += $time;
 					echo "<tr>";
-						echo "<td>" . $profile->getSQLStatement() . "</td>";
-                        echo "<td>" . print_r($profile->getSQLVariables(), true) . "</td>";
+						echo "<td><pre><code class='language-sql'>" . $profile->getSQLStatement() . "</code></pre></td>";
+						echo "<td><pre>" . print_r($profile->getSQLVariables(), true) . "</pre></td>";
 						echo "<td>" . round($time, 6) . "</td>";
 					echo "</tr>";
 				endforeach;
 			?>
 			<tr>
-				<td><strong>Total:</strong></td>
-                <td></td>
+				<td colspan="2"><strong>Total:</strong></td>
 				<td><strong><?php echo round($total, 6); ?></strong></td>
 			</tr>
 			</tbody>
@@ -41,7 +40,7 @@
                 $db = $debugWidget->getDI()->get($dbName);
                 $descriptors = $db->getDescriptor();
 ?>
-		<h3 class='collapser'>DB Server</h3>
+		<h3 class="collapser">DB Server</h3>
 		<table class='pdw-data-table'>
 			<tbody>
 			<tr>
@@ -49,22 +48,12 @@
 				<td><?php echo $db->getType(); ?></td>
 			</tr>
 			<?php
-				foreach($descriptors as $k=>$v) {
-                    echo "<tr>";
-                    echo "<td width='100px;'>{$k}</td>";
-
-                    if (is_string($v)) {
-                        if ($k != "password") {
-                            echo "<td>{$v}</td>";
-                        } else {
-                            echo "<td>**********</td>";
-                        }
-                    } else {
-                        echo "<td></td>";
-                    }
-
-                    echo "</tr>";
-                };
+				foreach($descriptors as $k=>$v):
+					echo "<tr>";
+						echo "<td>{$k}</td>";
+						echo "<td>".(($k!='password')?$v:'********')."</td>";
+					echo "</tr>";
+				endforeach;
 			?>
 			</tbody>
 		</table>

@@ -1,14 +1,14 @@
-Phalcon Debug Widget (PDW) for Phalcon 2
+Phalcon Debug Widget (PDW) for Phalcon 3
 ===
 
-1) Forked from [jymboche/phalcon-debug-widget](https://github.com/jymboche/phalcon-debug-widget)
+1) Forked from [Zazza/phalcon-debug-widget] (https://github.com/Zazza/phalcon-debug-widget)
 
-2) Update from https://github.com/Zazza/phalcon-debug-widget
+2) Update from https://github.com/C0DE8/phalcon3-debug-widget
 
 Changelog:
 =====
-- it isn't necessary to move assets(/pdw-assets/) to public dir
-- jquery dependence is removed
+- no necessary assets
+- no jquery dependence
 - the sections: Server, Views, Database hide and show by click
 
 Note (How it works):
@@ -31,7 +31,7 @@ If it looks familiar, its because its modeled after the [Yii debug toolbar](http
 
 composer.json:
 ```
-"zazza/phalcon2-debug-widget": "dev-master"
+"C0DE8/phalcon3-debug-widget": "dev-master"
 ```
 
 Copy or move the /vendor/zazza/phalcon-debug-widget/src/pdw-assets folder to your public folder.

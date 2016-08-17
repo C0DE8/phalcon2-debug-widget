@@ -1,20 +1,34 @@
 {
-    "name": "zazza/phalcon2-debug-widget",
-    "description": "Phalcon debug toolbar for Phalcon 2",
-    "require": {
-        "php": ">=5.3.0"
-    },
+    "name": "C0DE8/phalcon3-debug-widget",
+    "description": "Phalcon debug toolbar for Phalcon 3",
     "license": "MIT",
     "authors": [
         {
-            "name": "Dmitry Samotoy",
-            "email": "dmitry.samotoy@gmail.com"
+            "name": "Bjoern Ellebrecht",
+            "email": "packagist.bjoern@ellebrecht.name",
+            "homepage":"http://ellebrecht.name/",
+            "role": "developer"
         }
     ],
+    "support": {
+        "source": "https://github.com/C0DE8/phalcon3-debug-widget",
+        "issues": "https://github.com/C0DE8/phalcon3-debug-widget/issues",
+        "wiki":   "https://github.com/C0DE8/phalcon3-debug-widget/wiki"
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "ext-phalcon": ">= 3.0.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "~2.0",
+        "phpunit/php-code-coverage": "~2.0"
+    },
+
     "minimum-stability": "dev",
     "autoload": {
-        "psr-0": {
-            "PDW": "src/"
+        "psr-4": {
+            "PDW\\": "src/",
+            "Vendor\\C0DE8\\": ""
         }
     }
 }
