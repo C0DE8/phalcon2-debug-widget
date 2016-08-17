@@ -1,5 +1,5 @@
 {
-    "name": "C0DE8/phalcon3-debug-widget",
+    "name": "c0de8/phalcon3-debug-widget",
     "description": "Phalcon debug toolbar for Phalcon 3",
     "license": "MIT",
     "authors": [
@@ -27,7 +27,7 @@
     "autoload": {
         "psr-4": {
             "PDW\\": "src/",
-            "Vendor\\C0DE8\\": ""
+            "Vendor\\c0de8\\": ""
         }
     }
 }
