@@ -34,8 +34,6 @@ composer.json:
 "C0DE8/phalcon3-debug-widget": "dev-master"
 ```
 
-Copy or move the /vendor/zazza/phalcon-debug-widget/src/pdw-assets folder to your public folder.
-
 ## Usage and Configuration
 
 Define a debug or environment flag in your main index.php file so you can easily disable the Phalcon Debug Widget on production environments. Example:
