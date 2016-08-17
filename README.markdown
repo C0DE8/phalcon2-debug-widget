@@ -45,8 +45,19 @@ defined('PHALCONDEBUG') || define('PHALCONDEBUG', true);
 After you have setup your \Phalcon\Loader and \Phalcon\DI\FactoryDefault() create a new instance of the debug widget. 
 
 ```php
-if (PHALCONDEBUG == true) {
-	$debugWidget = new \PDW\DebugWidget($di);
+if (PHALCONDEBUG) {
+    $debugWidget = new \PDW\DebugWidget($di, [
+        'db'          => ['dbRead', 'dbWrite],
+        'dispatch'    => ['dispatcher'],
+        'view'        => ['view'],
+        'apiProvider' => ['apiProvider']
+    ], [
+        'server',
+        'request',
+        'views',
+        'db',
+        'api'
+    ]);
 }
 ```
 
