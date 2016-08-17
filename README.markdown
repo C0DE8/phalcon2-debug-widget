@@ -10,8 +10,8 @@ Phalcon Debug Widget (PDW) for Phalcon 3
 
 Changelog:
 =====
-- no necessary assets
-- no jquery dependence (all images, CSS and JS Code is minified and inlineM jQuery with "noConflict")
+- no necessary assets (all images, CSS and JS Code is minified and inline)
+- no jquery dependence (jQuery is executed with "noConflict")
 - the sections: Server, Views, Database hide and show by click
 
 Note (How it works):
@@ -45,7 +45,7 @@ Define a debug or environment flag in your main index.php file so you can easily
 defined('PHALCONDEBUG') || define('PHALCONDEBUG', true);
 ```
 
-After you have setup your \Phalcon\Loader and \Phalcon\DI\FactoryDefault() create a new instance of the debug widget. 
+After you have setup your \Phalcon\Loader and \Phalcon\DI\FactoryDefault() create a new instance of the debug widget inside your "index.php", where application is started.
 
 ```php
 if (PHALCONDEBUG) {
