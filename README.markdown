@@ -37,6 +37,11 @@ composer.json:
 "c0de8/phalcon3-debug-widget": "dev-master"
 ```
 
+composer require (command line):
+```
+composer require c0de8/phalcon3-debug-widget:dev-master
+```
+
 ## Usage and Configuration
 
 Define a debug or environment flag in your main index.php file so you can easily disable the Phalcon Debug Widget on production environments. Example:
