@@ -31,7 +31,7 @@ If it looks familiar, its because its modeled after the [Yii debug toolbar](http
 
 composer.json:
 ```
-"C0DE8/phalcon3-debug-widget": "dev-master"
+"c0de8/phalcon3-debug-widget": "dev-master"
 ```
 
 ## Usage and Configuration
