@@ -1,6 +1,9 @@
 Phalcon Debug Widget (PDW) for Phalcon 3
 ===
 
+[![Latest Stable Version](https://poser.pugx.org/C0DE8/phalcon3-debug-widget/version?format=flat-square)](https://packagist.org/packages/C0DE8/phalcon3-debug-widget)
+[![Total Downloads](https://poser.pugx.org/C0DE8/phalcon3-debug-widget/downloads?format=flat-square)](https://packagist.org/packages/C0DE8/phalcon3-debug-widget)
+
 1) Forked from [Zazza/phalcon-debug-widget] (https://github.com/Zazza/phalcon-debug-widget)
 
 2) Update from https://github.com/C0DE8/phalcon3-debug-widget
@@ -8,7 +11,7 @@ Phalcon Debug Widget (PDW) for Phalcon 3
 Changelog:
 =====
 - no necessary assets
-- no jquery dependence
+- no jquery dependence (all images, CSS and JS Code is minified and inlineM jQuery with "noConflict")
 - the sections: Server, Views, Database hide and show by click
 
 Note (How it works):
