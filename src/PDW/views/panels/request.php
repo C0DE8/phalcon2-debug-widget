@@ -17,8 +17,13 @@
                 foreach($_SESSION as $k=>$v):
                     $class = is_array($v)? "language-php" : "";
                     echo "<tr>";
-                    echo "<td>{$k}</td>";
+                    echo '<td style="vertical-align: top;">'.$k.'</td>';
                     echo "<td><pre class=''><code class='{$class}'>";
+                    if (is_object($v) && method_exists($v, 'toArray')) {
+                        $v = $v->toArray();
+                    } else {
+                        $v = (array) $v;
+                    }
                     print_r($v);
                     echo "</code></pre></td>";
                     echo "</tr>";

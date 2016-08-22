@@ -2,11 +2,14 @@
 
 namespace PDW;
 
+use Phalcon\Di\FactoryDefault;
 use Phalcon\DiInterface,
-    Phalcon\Db\Profiler as Profiler,
-    Phalcon\Escaper     as Escaper,
-//    Phalcon\Mvc\Url     as URL,
-    Phalcon\Mvc\View    as View;
+    Phalcon\Db\Profiler  as Profiler,
+    Phalcon\Escaper      as Escaper,
+    Phalcon\Mvc\View     as View,
+    Phalcon\Mvc\View\Engine\Php
+    ;
+
 
 /**
  * Class DebugWidget
@@ -251,15 +254,41 @@ class DebugWidget implements \Phalcon\DI\InjectionAwareInterface
      */
     public function renderToolbar()
     {
+        $localDi = new FactoryDefault();
         $view    = new View();
+        $view->setDI($localDi);
         $viewDir = dirname(__FILE__) .'/views/';
         $view->setViewsDir($viewDir);
+        $view->registerEngines([
+            '.php' => 'Phalcon\Mvc\View\Engine\Php' // set PHP file ext for views
+        ]);
 
         // set vars
         $view->debugWidget = $this;
 
         $content = $view->getRender('toolbar', 'index');
         return $content;
+    }
+
+    public function getHumanReadableSize($rawSize)
+    {
+        $hSize  = $rawSize;
+        $metric = 'b';
+
+        switch (true) {
+            case ($hSize> 1024):
+                $hSize = round($hSize / 1024, 2);
+                $metric = 'kB';
+                break;
+
+            case ($hSize > 1024):
+                $hSize = round($hSize / 1024, 2);
+                $metric = 'mB';
+                break;
+
+        }
+
+        return $hSize . ' ' . $metric;
     }
 
     /**
