@@ -30,12 +30,13 @@
             </li>
             <li>
                 <a href="#includedFiles">
-                    included Files<br />
+                    Includes<br />
+                    <small><span id="pdw-included-files"></span> included files</small>
                 </a>
             </li>
         </ul>
         <?php foreach (array('server', 'request', 'views', 'db', 'includedFiles') as $panel) {
-			$this->partial("panels/{$panel}");
+            $this->partial("panels/{$panel}");
         } ?>
 
         <div id="pdw-resources">

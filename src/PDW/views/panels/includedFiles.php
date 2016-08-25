@@ -43,10 +43,13 @@ $count = count($includedFilesRaw);
             <tbody>
             <?php
             foreach($includedFilesSorted as $filePath => $size):
-                echo '<tr><td class="align-right"><pre>[' . str_pad(number_format($size, 0,'', '.'), 7, ' ' , STR_PAD_LEFT ) . ']</pre></td><td>' . $filePath . '</td>';
+                echo '<tr><td class="align-right"><pre>[' . str_pad(number_format($size, 0,'', '.'), 7, ' ' , STR_PAD_LEFT ) . ' Bytes]</pre></td><td>' . $filePath . '</td>';
             endforeach;
             ?>
             </tbody>
         </table>
     </div>
 </div>
+<script>
+    $('#pdw-included-files').html(<?php echo (int) $count; ?>);
+</script>
