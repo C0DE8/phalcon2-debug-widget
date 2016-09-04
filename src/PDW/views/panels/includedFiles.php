@@ -19,7 +19,7 @@ $count = count($includedFilesRaw);
             <thead>
             <tr>
                 <th>Size</th>
-                <th>File</th>
+                <th>File</th> 
             </tr>
             </thead>
             <tbody>

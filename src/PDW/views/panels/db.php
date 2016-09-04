@@ -50,8 +50,12 @@
 			<?php
 				foreach($descriptors as $k=>$v):
 					echo "<tr>";
-						echo "<td>{$k}</td>";
-						echo "<td>".(($k!='password')?$v:'********')."</td>";
+					echo "<td>{$k}</td>";
+					if (is_array($v)) {
+						echo "<td><pre>" . print_r($v, true) . "</pre></td>";
+					} else {
+						echo "<td>" . (($k != 'password') ? $v : '********') . "</td>";
+					}
 					echo "</tr>";
 				endforeach;
 			?>
