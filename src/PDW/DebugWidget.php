@@ -2,20 +2,19 @@
 
 namespace PDW;
 
-use Phalcon\Di\FactoryDefault;
-use Phalcon\DiInterface,
-    Phalcon\Db\Profiler  as Profiler,
-    Phalcon\Escaper      as Escaper,
-    Phalcon\Mvc\View     as View,
-    Phalcon\Mvc\View\Engine\Php
-    ;
+use Phalcon\Di\FactoryDefault,
+    Phalcon\DI\InjectionAwareInterface,
+    Phalcon\DiInterface,
+    Phalcon\Db\Profiler                 as Profiler,
+    Phalcon\Mvc\View                    as View
+;
 
 
 /**
  * Class DebugWidget
  * @package PDW
  */
-class DebugWidget implements \Phalcon\DI\InjectionAwareInterface
+class DebugWidget implements InjectionAwareInterface
 {
 
     /**
@@ -46,12 +45,12 @@ class DebugWidget implements \Phalcon\DI\InjectionAwareInterface
     /**
      * @var array
      */
-    protected $_viewsRendered = array();
+    protected $_viewsRendered = [];
 
     /**
      * @var array
      */
-    protected $_serviceNames  = array();
+    protected $_serviceNames  = [];
 
 
     /**
@@ -62,11 +61,11 @@ class DebugWidget implements \Phalcon\DI\InjectionAwareInterface
     public function __construct(
         $di,
         $serviceNames =
-            array(
-                'db'       => array('dbRead', 'dbWrite'),
-                'dispatch' => array('dispatcher'),
-                'view'     => array('view')
-            )
+            [
+                'db'       => ['dbRead', 'dbWrite'],
+                'dispatch' => ['dispatcher'],
+                'view'     => ['view']
+            ]
     ) {
         $this->_di       = $di;
         $this->startTime = microtime(true);
@@ -148,15 +147,15 @@ class DebugWidget implements \Phalcon\DI\InjectionAwareInterface
      */
     public function beforeRenderView($event, $view, $file)
     {
-        $params = array();
+        $params = [];
         $toView = $view->getParamsToView();
-        $toView = !$toView? array() : $toView;
+        $toView = !$toView ? [] : $toView;
 
         foreach ($toView as $k=>$v) {
             if (is_object($v)) {
                 $params[$k] = get_class($v);
             } elseif(is_array($v)) {
-                $array = array();
+                $array =[];
                 foreach ($v as $key=>$value) {
                     if (is_object($value)) {
                         $array[$key] = get_class($value);
@@ -172,12 +171,12 @@ class DebugWidget implements \Phalcon\DI\InjectionAwareInterface
             }
         }
 
-        $this->_viewsRendered[] = array(
+        $this->_viewsRendered[] = [
             'path'       => $view->getActiveRenderPath(),
             'params'     => $params,
             'controller' => $view->getControllerName(),
             'action'     => $view->getActionName(),
-        );
+        ];
     }
 
     /**
@@ -207,18 +206,13 @@ class DebugWidget implements \Phalcon\DI\InjectionAwareInterface
      */
     public function getInsertStyles()
     {
-        $escaper = new Escaper();
-        $url     = $this->getDI()->get('url');
-        $style   = "";
-
-        $css = [
-            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css'
+        $style = "";
+        $css   = [
+            '//cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css'
         ];
 
         foreach ($css as $src) {
-            $link   = $url->get($src);
-            $link   = str_replace("//", "/", $link);
-            $style .= '<link rel="stylesheet" type="text/css" href="' . $escaper->escapeHtmlAttr($link) . '" />' . PHP_EOL;
+            $style .= '<link rel="stylesheet" type="text/css" href="' . $src . '" />' . PHP_EOL;
         }
 
         return $style;
@@ -232,18 +226,13 @@ class DebugWidget implements \Phalcon\DI\InjectionAwareInterface
      */
     public function getInsertScripts()
     {
-        $escaper = new Escaper();
-        $url     = $this->getDI()->get('url');
         $scripts = '';
-
-        $js = array(
-             'https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js'
-        );
+        $js      = [
+            '//cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js'
+        ];
 
         foreach ($js as $src) {
-            $link     = $url->get($src);
-            $link     = str_replace("//", "/", $link);
-            $scripts .= '<script style="text/javascript" src="' . $escaper->escapeHtmlAttr($link) . '"></script>' . PHP_EOL;
+            $scripts .= '<script style="text/javascript" src="' . $src . '"></script>' . PHP_EOL;
         }
 
         return $scripts;
@@ -256,7 +245,9 @@ class DebugWidget implements \Phalcon\DI\InjectionAwareInterface
     {
         $localDi = new FactoryDefault();
         $view    = new View();
+
         $view->setDI($localDi);
+
         $viewDir = dirname(__FILE__) .'/views/';
         $view->setViewsDir($viewDir);
         $view->registerEngines([
@@ -270,6 +261,10 @@ class DebugWidget implements \Phalcon\DI\InjectionAwareInterface
         return $content;
     }
 
+    /**
+     * @param $rawSize
+     * @return string
+     */
     public function getHumanReadableSize($rawSize)
     {
         $hSize  = $rawSize;
