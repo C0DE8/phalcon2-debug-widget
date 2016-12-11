@@ -73,7 +73,7 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 <script type="application/javascript">
 $.noConflict(),function(e){e(function(){e("#pdw-main-nav a").click(function(t){t.preventDefault(),e("#pdw-main-nav a").removeClass("active"),e(this).addClass("active");var o=e(this).attr("href");o=o.replace("#","");var n="#pdw-panel-"+o,a=e(n);e(".pdw-panel:not("+n+")").hide(),a.is(":visible")?(a.hide(),e(this).removeClass("active")):a.show()}),e(".pdw-panel-close").click(function(t){t.preventDefault(),e(this).closest(".pdw-panel").hide(),e("#pdw-main-nav a").removeClass("active")}),e("#pdw-icon").click(function(){1==localStorage.getItem("pdwIsOpen")?e(document).trigger("pdw-close"):e(document).trigger("pdw-open")}),e(document).on("pdw-open",function(){e("#pdw-toolbar").show(),localStorage.setItem("pdwIsOpen",1)}),e(document).on("pdw-close",function(){e("#pdw-toolbar").hide(),localStorage.setItem("pdwIsOpen",0)}),1==localStorage.getItem("pdwIsOpen")&&e(document).trigger("pdw-open"),e(".collapser").click(function(){e(this).hasClass("closed")?(e(this).removeClass("closed"),e(this).next().show()):(e(this).addClass("closed"),e(this).next().hide())})})}(jQuery);
 </script>

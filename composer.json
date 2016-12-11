@@ -1,7 +1,7 @@
 {
     "name": "c0de8/phalcon3-debug-widget",
     "description": "Phalcon debug toolbar for Phalcon 3",
-    "license": "MIT",
+    "license": "GPL-3.0+",
     "authors": [
         {
             "name": "Bjoern Ellebrecht",
