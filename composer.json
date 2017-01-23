@@ -15,6 +15,9 @@
         "issues": "https://github.com/C0DE8/phalcon3-debug-widget/issues",
         "wiki":   "https://github.com/C0DE8/phalcon3-debug-widget/wiki"
     },
+    {
+
+    },
     "require": {
         "php": ">=5.4.0",
         "ext-phalcon": ">= 3.0.0"
