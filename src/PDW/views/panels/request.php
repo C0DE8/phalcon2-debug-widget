@@ -102,6 +102,34 @@
             </tbody>
         </table>
 
+        <h3 class='collapser'>$_ENV</h3>
+        <table class='pdw-data-table'>
+            <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            exec("env", $env);
+            sort($env);
+            foreach($env as $d):
+                list($k, $v) = explode('=', $d);
+                if (empty(trim($v))) { $v = '<span style="font-style:italic:color:#666;">{ empty }</span>'; }
+                if (in_array($k, ['DATABASE_READ_PASS', 'DATABASE_WRITE_PASS'])) { $v = '******'; }
+                $class = is_array($v)? "language-php" : "";
+                echo "<tr>";
+                echo "<td>{$k}</td>";
+                echo "<td><pre><code class='{$class}'>";
+                print_r($v);
+                echo "</code></pre></td>";
+                echo "</tr>";
+            endforeach;
+            ?>
+            </tbody>
+        </table>
+
         <h3 class='collapser'>$_FILES</h3>
         <table class='pdw-data-table'>
             <thead>

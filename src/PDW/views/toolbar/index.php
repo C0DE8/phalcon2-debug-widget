@@ -13,7 +13,7 @@
             <li>
                 <a href="#request">
                     Request<br/>
-                    <small>session, cookie, get, post, files</small>
+                    <small>session, cookie, get, post, env, files</small>
                 </a>
             </li>
             <li>
