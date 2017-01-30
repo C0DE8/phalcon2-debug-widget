@@ -1,6 +1,8 @@
 {
     "name": "c0de8/phalcon3-debug-widget",
     "description": "Phalcon debug toolbar for Phalcon 3",
+    "keywords": ["debug", "widget", "toolbar", "phalcon"],
+    "homepage": "https://github.com/c0de8/phalcon3-debug-widget",
     "license": "GPL-3.0+",
     "authors": [
         {
